@@ -1,21 +1,21 @@
->This is a omv4 install in proxmox ve 5.3/5.4/6.0 shell script.
+>This is a OpenMediaVault install in Proxmox VE 5.x/6.x shell script.
 
-## new systemd-nspawn ##
+## New systemd-nspawn ##
 
-add new systemd-nspawn version in [systemd-v1.0](https://github.com/ivanhao/OmvInPve/tree/systemd-v1.0)
-use `./install.sh` to install.
+Add new systemd-nspawn version in [systemd-v1.0](https://github.com/ivanhao/OmvInPve/tree/systemd-v1.0).
+Use `./install.sh` to install.
 
-## install guide ##
+## Install Guide ##
 
-1. clone or download the code to your proxmox ve. `git clone https://github.com/ivanhao/OmvInPve.git`
-2. cd to the path
-3. execute the `chmod +x ./*.sh` command to make it have right permission to execute the install or uninstall.
-4. `./OmvInPve.sh` to install.
-> Don't forget to make a snapshot for rpool before run it.
+1. Clone or download the code to your proxmox ve. `git clone https://github.com/zhz8888/OpenMediaVault-in-Proxmox_VE.git`.
+2. Cd to the path.
+3. Execute the `chmod +x ./*.sh` command to make it have right permission to execute the install or uninstall.
+4. Execute the`./OpenMediaVault-in-Proxmox_VE-EN.sh` to install.
 
-> you must run this script as `root`.
+> Don't forget to make a snapshot for rpool before run it.You must run this script as `root`.
 
-## uninstall guide ##
-`apt-get autoremove openmediavault`
-or
-rollback your zfs rpool's snapshot and reboot.
+## Uninstall Guide ##
+Execute the`apt-get autoremove openmediavault` or rollback your zfs rpool's snapshot and reboot.
+
+##  Preview ##
+![preview](./preview.png)
