@@ -76,6 +76,10 @@ nginx pm-utils wpasupplicant samba-vfs-modules python3-pyudev python3-natsort jq
     rm -rf ./omvtmp
     omv-initsystem
     apt-mark hold openmediavault
+    apt-get autoremove
+    dpkg --list | grep "^rc" | cut -d " " -f 3 | xargs sudo dpkg --purge
+    apt-get clean
+    apt-get autoclean
 }
 
 pve6x(){
@@ -147,7 +151,10 @@ salt-minion samba samba-vfs-modules sdparm sshpass sudo tdb-tools uuid wpasuppli
     systemctl start openmediavault-cleanup-php.service
     systemctl start openmediavault-engined.service
     systemctl start openmediavault-issue.service
-
+    apt-get autoremove
+    dpkg --list | grep "^rc" | cut -d " " -f 3 | xargs sudo dpkg --purge
+    apt-get clean
+    apt-get autoclean
 }
 
 while [ true ] 
