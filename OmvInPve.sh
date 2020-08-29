@@ -16,8 +16,8 @@ OS=`/usr/bin/pveversion|awk -F'-' 'NR==1{print $1}'`
 ver=`/usr/bin/pveversion|awk -F'/' 'NR==1{print $2}'|awk -F'-' '{print $1}'`
 pve=$OS$ver
 if [ "$OS" != "pve" ];then
-    echo "您的系统不是Proxmox VE, 无法安装，马上退出!"
-    echo "Your OS is not Proxmox VE.Now quit!"
+    echo "您的系统不是 Proxmox VE , 无法安装!"
+    echo "Your OS is not Proxmox VE that cannot install!"
     exit
 fi
 
@@ -62,17 +62,17 @@ samba-common-bin wsdd avahi-daemon libnss-mdns monit acpid beep php-bcmath rrdto
 quota php-xml quotatool liblocale-po-perl proftpd-mod-vroot libjavascript-minifier-xs-perl xmlstarlet parted \
 nginx pm-utils wpasupplicant samba-vfs-modules python3-pyudev python3-natsort jq ntp python3-netifaces python3-lxml resolvconf
     rm ./openmediavault_4*.deb
-    wget http://packages.openmediavault.org/public/pool/main/o/openmediavault/openmediavault_4.1.22-1_all.deb 
-    dpkg-deb -x openmediavault_4.1.22-1_all.deb omvtmp 
-    dpkg-deb --control openmediavault_4.1.22-1_all.deb omvtmp/DEBIAN 
+    wget https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/public/pool/main/o/openmediavault/openmediavault_4.1.35-1_all.deb
+    dpkg-deb -x openmediavault_4.1.35-1_all.deb omvtmp 
+    dpkg-deb --control openmediavault_4.1.35-1_all.deb omvtmp/DEBIAN 
     sed -i "s/watchdog, //g" omvtmp/DEBIAN/control 
     rm omvtmp/usr/share/openmediavault/engined/module/networking.inc
     rm omvtmp/usr/share/openmediavault/engined/rpc/network.inc
     rm omvtmp/usr/share/openmediavault/engined/inc/60networkinterfacebackend.inc
-    dpkg -b omvtmp openmediavault_4.1.22-1_all.deb 
-    dpkg --force-all -i openmediavault_4.1.22-1_all.deb
-    echo "安装完成，下面初始化OMV!"
-    echo "Installation Complete, now init the OMV!"
+    dpkg -b omvtmp openmediavault_4.1.35-1_all.deb 
+    dpkg --force-all -i openmediavault_4.1.35-1_all.deb
+    echo "安装完成，下面初始化OpenMediaVault 4!"
+    echo "Installation Complete, now init the OpenMediaVault 4!"
     rm ./openmediavault_4*.deb
     rm -rf ./omvtmp
     omv-initsystem
@@ -81,8 +81,8 @@ nginx pm-utils wpasupplicant samba-vfs-modules python3-pyudev python3-natsort jq
 }
 
 pve54(){
-    echo "您的系统是：$pve, 您将安装OMV4"
-    echo -n "Your OS：$pve, you will install OMV4"
+    echo "您的系统是：$pve, 您将安装 OpenMediaVault 4"
+    echo -n "Your OS：$pve, you will install OpenMediaVault 4"
     apt-mark unhold openmediavault
     apt-get autoremove openmediavault
     apt-get -f -y install apparmor attr bridge-utils ceph-common ceph-fuse cifs-utils corosync criu cstream dtach ebtables \
@@ -123,16 +123,16 @@ samba-common-bin wsdd avahi-daemon libnss-mdns monit acpid beep php-bcmath rrdto
 quota php-xml quotatool liblocale-po-perl proftpd-mod-vroot libjavascript-minifier-xs-perl xmlstarlet parted \
 nginx pm-utils wpasupplicant samba-vfs-modules python3-pyudev python3-natsort jq ntp python3-netifaces python3-lxml resolvconf
     rm ./openmediavault_4*.deb
-    wget http://packages.openmediavault.org/public/pool/main/o/openmediavault/openmediavault_4.1.22-1_all.deb 
-    dpkg-deb -x openmediavault_4.1.22-1_all.deb omvtmp 
-    dpkg-deb --control openmediavault_4.1.22-1_all.deb omvtmp/DEBIAN 
+    wget https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/public/pool/main/o/openmediavault/openmediavault_4.1.35-1_all.deb
+    dpkg-deb -x openmediavault_4.1.35-1_all.deb omvtmp 
+    dpkg-deb --control openmediavault_4.1.35-1_all.deb omvtmp/DEBIAN 
     sed -i "s/watchdog, //g" omvtmp/DEBIAN/control 
     rm omvtmp/usr/share/openmediavault/engined/module/networking.inc
     rm omvtmp/usr/share/openmediavault/engined/rpc/network.inc
     rm omvtmp/usr/share/openmediavault/engined/inc/60networkinterfacebackend.inc
-    dpkg -b omvtmp openmediavault_4.1.22-1_all.deb 
-    dpkg --force-all -i openmediavault_4.1.22-1_all.deb
-    echo "安装完成，下面初始化OMV!"
+    dpkg -b omvtmp openmediavault_4.1.35-1_all.deb 
+    dpkg --force-all -i openmediavault_4.1.35-1_all.deb
+    echo "安装完成，下面初始化 OpenMediaVault 4!"
     echo "Installation Complete, now init the OMV!"
     rm ./openmediavault_4*.deb
     rm -rf ./omvtmp
@@ -141,11 +141,11 @@ nginx pm-utils wpasupplicant samba-vfs-modules python3-pyudev python3-natsort jq
 }
 
 pve60(){
-    echo "您的系统是：$pve, 您将安装OMV5"
-    echo -n "Your OS：$pve, you will install OMV5"
+    echo "您的系统是：$pve, 您将安装 OpenMediaVault 5"
+    echo -n "Your OS：$pve, you will install OpenMediaVault 5"
     sleep 2
     cat <<EOF > /etc/apt/sources.list.d/openmediavault.list
-deb https://packages.openmediavault.org/public usul main
+deb https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/public usul main
 EOF
     apt-mark unhold openmediavault
     apt-get -y autoremove openmediavault
@@ -177,18 +177,18 @@ salt-minion samba samba-vfs-modules sdparm sshpass sudo tdb-tools uuid wpasuppli
     apt-get -y -f install acl anacron libparted2 libsasl2-modules nfs-kernel-server parted
     apt-get -y -f install
     rm ./openmediavault_*.deb
-    wget -c http://packages.openmediavault.org/public/pool/main/o/openmediavault/openmediavault_5.0.14-1_all.deb
-    dpkg-deb -x openmediavault_5.0.14-1_all.deb omvtmp
-    dpkg-deb --control openmediavault_5.0.14-1_all.deb omvtmp/DEBIAN 
+    wget -c https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/public/pool/main/o/openmediavault/openmediavault_5.5.9-1_all.deb
+    dpkg-deb -x openmediavault_5.5.9-1_all.deb omvtmp
+    dpkg-deb --control openmediavault_5.5.9-1_all.deb omvtmp/DEBIAN 
     sed -i "s/watchdog, //g" omvtmp/DEBIAN/control 
     rm omvtmp/usr/share/openmediavault/engined/module/systemdnetworkd.inc
     rm omvtmp/usr/share/openmediavault/engined/rpc/network.inc
     rm omvtmp/usr/share/openmediavault/engined/inc/60networkinterfacebackend.inc
-    dpkg -b omvtmp openmediavault_5.0.14-1_all.deb 
-    dpkg --force-all -i openmediavault_5.0.14-1_all.deb
+    dpkg -b omvtmp openmediavault_5.5.9-1_all.deb 
+    dpkg --force-all -i openmediavault_5.5.9-1_all.deb
     apt-get -y -f install
-    dpkg --force-all -i openmediavault_5.0.14-1_all.deb
-    echo "安装完成，下面初始化OMV!"
+    dpkg --force-all -i openmediavault_5.5.9-1_all.deb
+    echo "安装完成，下面初始化 OpenMediaVault 5!"
     echo "Installation Complete, now init the OMV!"
     rm -rf ./omvtmp
     omv-confdbadm populate
@@ -216,44 +216,49 @@ salt-minion samba samba-vfs-modules sdparm sshpass sudo tdb-tools uuid wpasuppli
 
 while [ true ] 
     do
-        echo "如果您使用的是zfs文件系统，请务必给rpool做个快照，如果有问题可以回滚快照后重启系统!"
+        echo "如果您使用的是 zfs 文件系统，请务必给 rpool 做个快照，如果有问题可以回滚快照后重启系统!"
         echo "If you use zfs rpool for your system, please make sure your rpool has made a snapshot!"
-        echo "您的系统是：$pve, 您将安装OMV, 是否继续?(y/n)"
-        echo -n "Your OS：$pve, you will install OMV, continue?(y/n)"
+        echo "您的系统是：$pve, 您将安装 OpenMediaVault , 是否继续?(y/n)"
+        echo -n "Your OS：$pve, you will install OpenMediaVault, continue?(y/n)"
         read x
         case "$x" in
         y | yes ) 
-            echo "您的系统是：$pve, 您将安装OMV4"
-            echo -n "Your OS：$pve, you will install OMV4"
+            echo "您的系统是： $pve , 您将安装 OpenMediaVault 4"
+            echo -n "Your OS：$pve, you will install OpenMediaVault 4"
             echo "deb http://packages.openmediavault.org/public arrakis main" > /etc/apt/sources.list.d/openmediavault.list
             rm openmediavault-keyring_1.0_all.deb
-            wget http://packages.openmediavault.org/public/pool/main/o/openmediavault-keyring/openmediavault-keyring_1.0_all.deb 
+            wget https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/public/pool/main/o/openmediavault-keyring/openmediavault-keyring_1.0_all.deb
             dpkg -i openmediavault-keyring_1.0_all.deb
             apt-get update
             rm openmediavault-keyring_1.0_all.deb
             if [ $ver = "5.3" ];then
                 pve53
-                echo "如果没有意外，安装完成! 浏览器打开http://ip 去试试您的OMV!"
-                echo "Installation Complete! Go to http://ip to enjoy OMV!"
+                echo "如果没有意外，安装完成! 浏览器打开 http://ip 去试试您的 OpenMediaVault 4!"
+                echo "Installation Complete! Go to http://ip to enjoy OpenMediaVault 4!"
                 exit
             elif [ $ver = "5.4" ];then
                 pve54 
-                echo "如果没有意外，安装完成! 浏览器打开http://ip 去试试您的OMV!"
-                echo "Installation Complete! Go to http://ip to enjoy OMV!"
+                echo "如果没有意外，安装完成! 浏览器打开 http://ip 去试试您的 OpenMediaVault 4!"
+                echo "Installation Complete! Go to http://ip to enjoy OpenMediaVault 4!"
                 exit
             elif [ $ver = "6.0" ];then
                 pve60
-                echo "如果没有意外，安装完成! 浏览器打开http://ip 去试试您的OMV!"
-                echo "Installation Complete! Go to http://ip to enjoy OMV!"
+                echo "如果没有意外，安装完成! 浏览器打开 http://ip 去试试您的 OpenMediaVault 5!"
+                echo "Installation Complete! Go to http://ip to enjoy OpenMediaVault 5!"
                 exit
             elif [ $ver = "6.1" ];then
                 pve60
-                echo "如果没有意外，安装完成! 浏览器打开http://ip 去试试您的OMV!"
-                echo "Installation Complete! Go to http://ip to enjoy OMV!"
+                echo "如果没有意外，安装完成! 浏览器打开 http://ip 去试试您的 OpenMediaVault 5!"
+                echo "Installation Complete! Go to http://ip to enjoy OpenMediaVault 5!"
+                exit
+            elif [ $ver = "6.2" ];then
+                pve60
+                echo "如果没有意外，安装完成! 浏览器打开 http://ip 去试试您的 OpenMediaVault 5!"
+                echo "Installation Complete! Go to http://ip to enjoy OpenMediaVault 5!"
                 exit
             else
-                echo "你的proxmox ve版本不是5.3/5.4/6.0，不建议安装，即将退出。"
-                echo "Your proxmox ve version is not 5.3/5.4/6.0, it may harm your system, now quit."
+                echo "你的 Proxmox VE 版本不是 5.3/5.4/6.0/6.1/6.2 ，不建议安装，即将退出。"
+                echo "Your Proxmox VE version is not 5.3/5.4/6.0/6.1/6.2, it may harm your system, now quit."
                 break
             fi
         ;;
