@@ -21,7 +21,7 @@ if [ "$OS" != "pve" ];then
 fi
 
 pve5x(){
-    echo "您的系统是：$pve, 您将安装 OpenMediaVault 4"
+    echo "您的系统是 Proxmox VE $pve , 您将安装 OpenMediaVault 4"
     apt-mark unhold openmediavault
     apt-get autoremove openmediavault
     apt-get -f -y install apparmor attr bridge-utils ceph-common ceph-fuse cifs-utils corosync criu cstream dtach ebtables \
@@ -79,7 +79,7 @@ nginx pm-utils wpasupplicant samba-vfs-modules python3-pyudev python3-natsort jq
 }
 
 pve6x(){
-    echo "您的系统是：$pve, 您将安装 OpenMediaVault 5"
+    echo "您的系统是 Proxmox VE $pve , 您将安装 OpenMediaVault 5"
     sleep 2
     cat <<EOF > /etc/apt/sources.list.d/openmediavault.list
 deb https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/public usul main
@@ -153,11 +153,11 @@ salt-minion samba samba-vfs-modules sdparm sshpass sudo tdb-tools uuid wpasuppli
 while [ true ] 
     do
         echo "如果您使用的是 zfs 文件系统，请务必给 rpool 做个快照，如果有问题可以回滚快照后重启系统!"
-        echo "您的系统是：$pve, 您将安装 OpenMediaVault , 是否继续?(y/n)"
+        echo "您的系统是 Proxmox VE $pve , 您将安装 OpenMediaVault , 是否继续?(y/n)"
         read x
         case "$x" in
         y | yes ) 
-            echo "您的系统是： $pve , 您将安装 OpenMediaVault "
+            echo "您的系统是 Proxmox VE $pve , 您将安装 OpenMediaVault "
             echo "deb http://packages.openmediavault.org/public arrakis main" > /etc/apt/sources.list.d/openmediavault.list
             rm openmediavault-keyring_1.0_all.deb
             wget https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/public/pool/main/o/openmediavault-keyring/openmediavault-keyring_1.0_all.deb
