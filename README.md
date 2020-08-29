@@ -1,3 +1,4 @@
+**中文｜[English](https://github.com/zhz8888/OpenMediaVault-in-Proxmox_VE/blob/master/README-EN.md)**
 >这是一个在 Proxmox VE 5.x/6.x 中安装 OpenMediaVault 的脚本。
 
 ## 新的systemd-nspawn版本 ##
@@ -15,13 +16,11 @@
 3. 执行`chmod +x ./*.sh`来让程序有执行的权限。
 4. 执行`./OpenMediaVault-in-Proxmox_VE-CN.sh`来安装，根据提示很快就完成了。然后刷新界面。
 
-> 不要忘记执行前给 rpool 做个快照，以便恢复快照。
-> 需要用 root 账号来运行。
+> 不要忘记执行前给 rpool 做个快照，以便恢复快照。需要用 root 账号来运行。
 
 ## 卸载 ##
 
-执行`apt-get autoremove openmediavault` 来卸载。
-或者回滚你的 rpool 快照，重启。
+执行`apt-get autoremove openmediavault` 来卸载，或者回滚你的 rpool 快照并重启。
 
 ##  Preview 预览 ##
 ![preview](./preview.png)
