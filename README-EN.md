@@ -1,3 +1,4 @@
+**[中文](https://github.com/zhz8888/OpenMediaVault-in-Proxmox_VE/blob/master/README.md)｜English**
 >This is a OpenMediaVault install in Proxmox VE 5.x/6.x shell script.
 
 ## New systemd-nspawn ##
